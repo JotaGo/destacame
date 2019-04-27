@@ -1,0 +1,9 @@
+{% if lista_trayectos %}
+    <ul>
+    {% for trayecto in lista_trayectos %}
+        <li><a href="/pasaje/{{ trayecto.nombre|slugify }}/">{{ trayecto.nombre }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay trayectos creados.</p>
+{% endif %}
