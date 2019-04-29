@@ -70,3 +70,8 @@ def administrar_pasajeros(request):
     else:
         form = PasajeroForm()
     return render(request, 'pasaje/c_pasajero.html', {'form': form})
+
+def read_trayectos(request):
+    trayectos = Trayecto.objects.all()
+    context = {'trayectos' : trayectos,}
+    return render(request, 'pasaje/r_trayectos.html', context)
