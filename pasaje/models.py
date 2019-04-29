@@ -18,8 +18,11 @@ class Chofer(models.Model):
 
 class Trayecto(models.Model):
     nombre = models.CharField(max_length=30)
-    horario = models.TimeField(auto_now=False, auto_now_add=False, null=False, blank=False)
+    horario = models.TimeField(auto_now=False, auto_now_add=False, null=True)
     pasajeros = models.ManyToManyField(Pasajero, through='Viaje')
+
+    def __str__(self):
+        return '{} {}'.format(self.nombre, self.horario)
 
 class Viaje(models.Model):
     trayectos = models.ForeignKey(Trayecto, on_delete=models.CASCADE)

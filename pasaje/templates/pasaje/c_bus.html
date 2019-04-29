@@ -1,0 +1,10 @@
+{% extends 'proyecto/base.html' %}
+
+{% block content %}
+<form action="/pasaje/administrar_buses/" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Crear">
+</form>
+
+{% endblock %}
