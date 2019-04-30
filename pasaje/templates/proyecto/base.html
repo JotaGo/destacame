@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %} Document {% endblock %}</title>
     <style>
-        ul {
+        .nav{
           list-style-type: none;
           margin: 0;
           padding: 0;
@@ -14,11 +14,11 @@
           background-color: #333;
         }
         
-        li {
+        .nav1 {
           float: left;
         }
         
-        li a {
+        .nav1 a {
           display: block;
           color: white;
           text-align: center;
@@ -35,12 +35,12 @@
 <body>
     
     {% block header %}
-    <ul>
-      <li><a href="/pasaje/">Inicio</a></li>
-      <li><a href="/pasaje/read_trayectos/">Administrar Trayectos</a></li>
-      <li><a href="/pasaje/read_buses/">Administrar Buses</a></li>
-      <li><a href="/pasaje/read_choferes/">Administrar Choferes</a></li>
-      <li><a href="/pasaje/read_pasajeros/">Administrar Pasajeros</a></li>
+    <ul class='nav'>
+      <li class='nav1'><a href="/pasaje/">Inicio</a></li>
+      <li class='nav1'><a href="/pasaje/read_trayectos/">Administrar Trayectos</a></li>
+      <li class='nav1'><a href="/pasaje/read_buses/">Administrar Buses</a></li>
+      <li class='nav1'><a href="/pasaje/read_choferes/">Administrar Choferes</a></li>
+      <li class='nav1'><a href="/pasaje/read_pasajeros/">Administrar Pasajeros</a></li>
     </ul>
     {% endblock %}
 

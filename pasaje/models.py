@@ -28,7 +28,7 @@ class Viaje(models.Model):
     trayectos = models.ForeignKey(Trayecto, on_delete=models.CASCADE)
     pasajeros = models.ForeignKey(Pasajero, on_delete=models.CASCADE)
     # asientos = models.IntegerField(choices=list(zip(range(1, 11), range(1, 11))))
-    fecha = models.DateField(auto_now=True, auto_now_add=False,)
+    fecha = models.DateField(auto_now=False, auto_now_add=False,)
     
     # class Meta:
     #     unique_together = ["trayectos","asientos","fecha"]

@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 
-from .models import (Pasajero, Trayecto, Chofer, Bus)
-from .forms import (TrayectoForm, PasajeroForm, ChoferForm, BusForm)
+from .models import (Pasajero, Trayecto, Chofer, Bus, Viaje)
+from .forms import (TrayectoForm, PasajeroForm, ChoferForm, BusForm, ViajeForm)
 
+import datetime
 # Create your views here.
 
 def index(request):
@@ -28,8 +29,27 @@ def avaliable_trayectos(request, trayecto_nombre):
     }
     return HttpResponse(template.render(context, request))
 
-def detalles(request, trayecto_nombre):
-    return HttpResponse("Aqui se observara una lista con los Trayectos disponibles para que el pasajero pueda escoger")
+def detalles(request, trayecto_id):
+    trayecto = Trayecto.objects.get(id=trayecto_id)
+    if request.method == 'POST':
+        form = ViajeForm(request.POST)
+        if form.is_valid():
+            trayecto_f = form.data['trayectos']
+            fecha_f = form.data['fecha']
+            count = Viaje.objects.filter(trayectos=trayecto_f,fecha=fecha_f).count()
+            if count <= 10:
+                form.save()
+                return redirect('index')
+            else:
+                return HttpResponse('El bus esta lleno, intenlo en otra fecha o tome otro bus')
+    else:
+        f = {
+            'pasajeros': None,
+            'trayectos': trayecto.id,
+            'fecha': None,
+        }
+        form = ViajeForm(initial=f)
+    return render(request, 'pasaje/viaje.html', {'form': form})
 
 def administrar_trayectos(request):
     if request.method == 'POST':

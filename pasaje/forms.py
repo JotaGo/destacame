@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
-from pasaje.models import (Trayecto, Pasajero, Chofer, Bus)
-from django.forms import (TextInput, TimeInput, Select)
+from pasaje.models import (Trayecto, Pasajero, Chofer, Bus, Viaje)
+from django.forms import (TextInput, TimeInput, Select, DateField, DateInput, HiddenInput)
 
 class TrayectoForm(ModelForm):
 
@@ -86,4 +86,26 @@ class BusForm(ModelForm):
             'matricula' : TextInput(attrs={'class' : 'form-control'}),
             'piloto' : Select(attrs={'class' : 'form-control'}),
             'trayectos' : Select(attrs={'class' : 'form-control'}),
+        }
+
+class ViajeForm(ModelForm):
+
+    class Meta:
+        model = Viaje
+        fields = [
+            'pasajeros',
+            'trayectos',
+            'fecha',
+        ]
+
+        labels = {
+            'pasajeros' : 'Pasajero',
+            'trayectos' : 'Trayecto',
+            'fecha' : 'Fecha',
+        }
+
+        widgets = {
+            'pasajeros' : Select(attrs={'class' : 'form-control'}),
+            'trayectos' : HiddenInput(attrs={'class' : 'form-control'}),
+            'fecha' : DateInput(attrs={'class' : 'form-control'})
         }

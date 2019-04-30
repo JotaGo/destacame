@@ -1,9 +1,13 @@
+{% extends 'proyecto/base.html' %}
+
+{% block content %}
 {% if horarios_trayecto %}
     <ul>
     {% for trayecto in horarios_trayecto %}
-        <li><a href="/pasaje/{{ trayecto.nombre|slugify }}/detalles/">{{ trayecto.horario|time:"g:i a" }}</a></li>
+        <li><a href="/pasaje/{{ trayecto.id }}/detalles/">{{ trayecto.horario|time:"g:i a" }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No hay trayectos creados.</p>
 {% endif %}
+{% endblock %}

@@ -21,5 +21,5 @@ urlpatterns = [
     path('read_choferes/', views.read_choferes, name='read_choferes'),
     path('read_buses/', views.read_buses, name='read_buses'),
     path('<slug:trayecto_nombre>/', views.avaliable_trayectos, name='av_trayectos'),
-    path('<slug:trayecto_nombre>/detalles/', views.detalles, name='viajes'),
+    path('<int:trayecto_id>/detalles/', views.detalles, name='viajes'),
 ]

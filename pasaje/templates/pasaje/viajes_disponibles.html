@@ -1,3 +1,7 @@
+{% extends 'proyecto/base.html' %}
+
+{% block content %}
+
 {% if lista_trayectos %}
     <ul>
     {% for trayecto in lista_trayectos %}
@@ -7,3 +11,5 @@
 {% else %}
     <p>No hay trayectos creados.</p>
 {% endif %}
+
+{% endblock %}
