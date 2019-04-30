@@ -1,0 +1,41 @@
+{% extends 'proyecto/base.html' %}
+
+{% block content %}
+<br></br>
+<a class='btn btn-primary' href="/pasaje/administrar_buses/">Agregar buses</a>
+<br></br>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Matricula</td>
+            <td>Piloto</td>
+            <td>Trayecto</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if buses %}
+        {% for bus in buses %}
+        <tr>
+            <td>{{ bus.id }}</td>
+            <td>{{ bus.matricula }}</td>
+            <td>{{ bus.piloto }}</td>
+            <td>{{ bus.trayecto }}</td>
+            <td>
+                <a class='btn btn-primary' href="{% url 'modificar_bus' bus.id %}">Editar</a>
+            </td>
+            <td>
+                <a class='btn btn-primary' href="{% url 'modificar_bus' bus.id %}delete">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+        {% else %}
+        <h5>No hay registro de trayectos</h5>
+
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

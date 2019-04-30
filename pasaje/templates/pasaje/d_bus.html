@@ -1,0 +1,11 @@
+{% extends 'proyecto/base.html' %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <h3>¿Desea eliminar el registro del Bus {{ bus.matricula }}</h3>
+    <input type="submit" value="Sí, eliminar">
+    <a class="btn btn-default" href="{% url 'read_buses' %}">Cancelar</a>
+</form>
+
+{% endblock %}

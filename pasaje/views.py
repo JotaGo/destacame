@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 
-from .models import Pasajero, Trayecto
+from .models import (Pasajero, Trayecto, Chofer, Bus)
 from .forms import (TrayectoForm, PasajeroForm, ChoferForm, BusForm)
 
 # Create your views here.
@@ -72,6 +72,93 @@ def administrar_pasajeros(request):
     return render(request, 'pasaje/c_pasajero.html', {'form': form})
 
 def read_trayectos(request):
-    trayectos = Trayecto.objects.all()
+    trayectos = Trayecto.objects.all().order_by('id')
     context = {'trayectos' : trayectos,}
     return render(request, 'pasaje/r_trayectos.html', context)
+
+def read_pasajeros(request):
+    pasajeros = Pasajero.objects.all().order_by('id')
+    context = {'pasajeros' : pasajeros}
+    return render(request, 'pasaje/r_pasajeros.html', context)
+
+def read_choferes(request):
+    choferes = Chofer.objects.all().order_by('id')
+    context = {'choferes' : choferes}
+    return render(request, 'pasaje/r_choferes.html', context)
+
+def read_buses(request):
+    buses = Bus.objects.all().order_by('id')
+    context = {'buses' : buses}
+    return render(request, 'pasaje/r_buses.html', context)
+
+def modificar_trayecto(request, trayecto_id):
+    trayecto = Trayecto.objects.get(id=trayecto_id)
+    if request.method == 'GET':
+        form = TrayectoForm(instance=trayecto)
+    else:
+        form = TrayectoForm(request.POST, instance=trayecto)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect('/pasaje/')
+    return render(request, 'pasaje/c_trayecto.html', {'form':form})
+
+def delete_trayecto(request, trayecto_id):
+    trayecto = Trayecto.objects.get(id=trayecto_id)
+    if request.method == 'POST' :
+        trayecto.delete()
+        return redirect('read_trayectos')
+    return render(request, 'pasaje/d_trayecto.html', {'trayecto':trayecto})        
+
+def modificar_bus(request, bus_id):
+    bus = Bus.objects.get(id=bus_id)
+    if request.method == 'GET':
+        form = BusForm(instance=bus)
+    else:
+        form = BusForm(request.POST, instance=bus)
+        if form.is_valid():
+            form.save()
+        return redirect('read_buses')
+    return render(request, 'pasaje/c_bus.html', {'form':form})
+
+def delete_bus(request, bus_id):
+    bus = Bus.objects.get(id=bus_id)
+    if request.method == 'POST' :
+        bus.delete()
+        return redirect('read_buses')
+    return render(request, 'pasaje/d_bus.html', {'bus':bus})
+
+def modificar_chofer(request, chofer_id):
+    chofer = Chofer.objects.get(id=chofer_id)
+    if request.method == 'GET':
+        form = ChoferForm(instance=chofer)
+    else:
+        form = ChoferForm(request.POST, instance=chofer)
+        if form.is_valid():
+            form.save()
+        return redirect('read_choferes')
+    return render(request, 'pasaje/c_chofer.html', {'form':form})
+
+def delete_chofer(request, chofer_id):
+    chofer = Chofer.objects.get(id=chofer_id)
+    if request.method == 'POST' :
+        chofer.delete()
+        return redirect('read_choferes')
+    return render(request, 'pasaje/d_chofer.html', {'chofer':chofer})
+
+def modificar_pasajero(request, pasajero_id):
+    pasajero = Pasajero.objects.get(id=pasajero_id)
+    if request.method == 'GET':
+        form = PasajeroForm(instance=pasajero)
+    else:
+        form = PasajeroForm(request.POST, instance=pasajero)
+        if form.is_valid():
+            form.save()
+        return redirect('read_pasajeros')
+    return render(request, 'pasaje/c_pasajero.html', {'form':form})
+
+def delete_pasajero(request, pasajero_id):
+    pasajero = Pasajero.objects.get(id=pasajero_id)
+    if request.method == 'POST' :
+        pasajero.delete()
+        return redirect('read_pasajeros')
+    return render(request, 'pasaje/d_pasajero.html', {'pasajero':pasajero})

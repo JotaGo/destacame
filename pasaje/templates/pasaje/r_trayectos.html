@@ -1,13 +1,16 @@
 {% extends 'proyecto/base.html' %}
 
 {% block content %}
-
+<br></br>
+<a class='btn btn-primary' href="/pasaje/administrar_trayectos/">Agregar trayectos</a>
+<br></br>
 <table class="table table-bordered">
     <thead>
         <tr>
             <td>#</td>
             <td>Trayecto</td>
             <td>Horario</td>
+            <td>Acciones</td>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +20,12 @@
             <td>{{ trayecto.id }}</td>
             <td>{{ trayecto.nombre }}</td>
             <td>{{ trayecto.horario }}</td>
+            <td>
+                <a class='btn btn-primary' href="{% url 'modificar_trayecto' trayecto.id %}">Editar</a>
+            </td>
+            <td>
+                <a class='btn btn-primary' href="{% url 'modificar_trayecto' trayecto.id %}delete">Eliminar</a>
+            </td>
         </tr>
         {% endfor %}
 

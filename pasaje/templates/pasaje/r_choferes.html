@@ -1,0 +1,42 @@
+{% extends 'proyecto/base.html' %}
+
+{% block content %}
+<br></br>
+<a class='btn btn-primary' href="/pasaje/administrar_choferes/">Agregar choferes</a>
+<br></br>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>RUN</td>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if choferes %}
+        {% for chofer in choferes %}
+        <tr>
+            <td>{{ chofer.id }}</td>
+            <td>{{ chofer.run }}</td>
+            <td>{{ chofer.nombre }}</td>
+            <td>{{ chofer.apellido }}</td>
+            <td>
+                <a class='btn btn-primary' href="{% url 'modificar_chofer' chofer.id %}">Editar</a>
+            </td>
+            <td>
+                <a class='btn btn-primary' href="{% url 'modificar_chofer' chofer.id %}delete">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+        {% else %}
+        <h5>No hay registro de trayectos</h5>
+
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}
+
