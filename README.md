@@ -36,15 +36,14 @@ para activar el servidor y probar el test
 Cambie un poco la base de datos con respecto al enunciado ya que me parece que el pasajero realmente no le importa el bus que tome
 lo que le importa es llegar a su destino.
 
-Tambien no pude mostrar una lista con los promedios de cada trayecto, solo logre mostrarlos de manera individual el promedio total
-de cada trayecto, pero originalmente queria mostrar una tabla como la siguiente:
+No logre mostrar una lista con los promedios de cada trayecto, pero pude mostrarlos de manera individual el promedio total de cada uno de ellos. La idea original era diseñar una tabla como la siguiente
 
                | Trayecto | 2019-04-28 | 2019-04-29 | 2019-04-30 |
                |Las Condes|    7.5     |      4     |     3.8    |
               |Providencia|     8      |      1     |      4     |
 
-Tampoco logre armar un Query para filtrar el % de los pasajeros en los buses de tal manera que ese objetivo del proyecto no lo logre
-tenia una idea pero ando corto de tiempo para aplicarla.
+No pude armar un Query para filtrar el % de los pasajeros en los buses.
+Tengo una idea de como desarrollarlo pero ando corto de tiempo para aplicarla.
 
 Por ultimo no trabaje con el fronted Vue.js, solo trabaje con los templates basicos que fui construyendo.
 
