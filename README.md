@@ -1,8 +1,8 @@
 Este es un test para la empresa destacame como backend developer en python usando Django
 
-##################################################################################################################
+###################################################################################
 
-## Instrucciones de instalación #
+# Instrucciones de instalación 
 
 Para la correcta instalación de el test primero hay que instalar Python3 en el sistema opertivo de la maquina
 Luego descargar el repositorio de Git-Hub y almacenar todo el repositorio en una carpeta ejemplo "C:\develop\python\destacame"
@@ -15,7 +15,7 @@ Ese comando creara una entorno virtual para el proyecto, ahora ejecutamos activa
 
         >venv/Scripts/activate    
 
-# Nota
+## Nota
 la ubicacion del archivo activate varia dependiendo del OS de la maquina, en este ejemplo es para windows
 ######
 Con el entorno virtual activado ahora instalamos las librerias y frameworks que usaremos para el proyecto usando el comando
@@ -30,22 +30,16 @@ una vez instalado todo lo que hacemos es ejecutar el comando:
 
 para activar el servidor y probar el test
 
-##########################################################################################################################
+###################################################################################
 
-# Observaciones
-Cambie un poco la base de datos con respecto al enunciado ya que me parece que el pasajero realmente no le importa el bus que tome
-lo que le importa es llegar a su destino.
+## Observaciones
+Analizando el enunciado, segun mi logica el cliente deberia tener relacion con el trayecto y no con el bus, asi que considerando eso diseñe asi la base de datos.
 
-No logre mostrar una lista con los promedios de cada trayecto, pero pude mostrarlos de manera individual el promedio total de cada uno de ellos. La idea original era diseñar una tabla como la siguiente
+Logre mostrar de manera individual el promedio total de cada trayecto, aunque mi idea original era mostrar un resultado como la siguiente tabala:
 
-               | Trayecto | 2019-04-28 | 2019-04-29 | 2019-04-30 |
-               |Las Condes|    7.5     |      4     |     3.8    |
+              |  Trayecto | 2019-04-28 | 2019-04-29 | 2019-04-30 |
+              | Las Condes|    7.5     |      4     |     3.8    |
               |Providencia|     8      |      1     |      4     |
-
-No pude armar un Query para filtrar el % de los pasajeros en los buses.
-Tengo una idea de como desarrollarlo pero ando corto de tiempo para aplicarla.
-
-Por ultimo no trabaje con el fronted Vue.js, solo trabaje con los templates basicos que fui construyendo.
 
 ##############################
 
