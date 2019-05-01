@@ -6,27 +6,27 @@ Este es un test para la empresa destacame como backend developer en python usand
 
 Para la correcta instalación de el test primero hay que instalar Python3 en el sistema opertivo de la maquina
 Luego descargar el repositorio de Git-Hub y almacenar todo el repositorio en una carpeta ejemplo "C:\develop\python\destacame"
-Una vez ya el repositorio en una carpeta se usara debe crear un entorno virtual, recomiendo usar virtualenv
+Una vez ya el repositorio en una carpeta se debera crear un entorno virtual, recomiendo usar virtualenv
 luego con el terminal de comandos nos movemos a la carpeta destacame (donde se encuenta el proyeto) y ejecutamos el comando:
 
-       $pip virtualenv venv
+       >pip virtualenv venv
 
 Ese comando creara una entorno virtual para el proyecto, ahora ejecutamos activamos este repositorio usando el comando:
 
-        $source venv/Scripts/activate    
+        >venv/Scripts/activate    
 
 # Nota
 la ubicacion del archivo activate varia dependiendo del OS de la maquina, en este ejemplo es para windows
 ######
 Con el entorno virtual activado ahora instalamos las librerias y frameworks que usaremos para el proyecto usando el comando
 
-    (venv)$pip install -r requirements.txt
+    (venv)>pip install -r requirements.txt
 
 para instalar todo lo que se encuentra listado en requirements.txt
 
 una vez instalado todo lo que hacemos es ejecutar el comando:
 
-    $python manage.py runserver
+    >python manage.py runserver
 
 para activar el servidor y probar el test
 
