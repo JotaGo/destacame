@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.db.models import Count, Avg
 
 from .models import (Pasajero, Trayecto, Chofer, Bus, Viaje)
 from .forms import (TrayectoForm, PasajeroForm, ChoferForm, BusForm, ViajeForm)
@@ -50,6 +51,19 @@ def detalles(request, trayecto_id):
         }
         form = ViajeForm(initial=f)
     return render(request, 'pasaje/viaje.html', {'form': form})
+
+def informacion(request, trayecto_nombre):
+    var = trayecto_nombre.split('-')
+    a = []
+    for items in var:
+        a.append(items.capitalize())
+    trayecto_n = ' '.join(a)
+    promedio = Viaje.objects.values('fecha').filter(trayectos__nombre=trayecto_n).annotate(cuenta=Count('pasajeros_id')).aggregate(Avg('cuenta'))
+    template = loader.get_template('pasaje/informacion.html')   
+    context = {
+        'promedio' : promedio,
+    }
+    return HttpResponse(template.render(context, request))
 
 def administrar_trayectos(request):
     if request.method == 'POST':

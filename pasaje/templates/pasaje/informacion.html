@@ -1,0 +1,19 @@
+{% extends 'proyecto/base.html' %}
+
+{% block content %}
+{% if promedio %}
+<h1>Promedio de este trayecto</h1>
+<h2>{{ promedio.cuenta__avg }}</h2>
+{% for x in promedio %}
+<h2>{{ x.cuenta }}</h2>
+{% endfor %}
+ <!---   {% for viaje in viajes %}
+        <li><a href="/pasaje/{{ viaje.id }}/detalles/">{{ viaje.id }}</a></li>
+    {% endfor %}
+    {% for trayecto in horarios_trayecto %}
+        <li>{{ trayecto.id }}</li>
+    {% endfor %} --->
+{% else %} 
+    <p>No hay fechas disponibles</p>     
+{% endif %}
+{% endblock %}
